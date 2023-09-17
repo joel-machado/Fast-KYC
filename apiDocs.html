@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/api.css">
+  <!-- <link rel="stylesheet" href="./style.css">  -->
+  <title>Document</title>
+  <style>
+
+
+  </style>
+
+
+
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="#" class="home-button">Home</a>
+    </div>
+    <div class="navbar-right">
+      <button class="connect-wallet-button" id="wallet-connect">Connect Wallet</button>
+    </div>
+  </nav>
+
+  <section id="vid-par">
+    <div class="image">
+      <img id="vidd" src="/image/img.gif" alt="" srcset="">
+    </div>
+    <div class="intro">
+      <h1> API DOCS </h1>
+      <h2 class="kyc">Use our API access and simplify KYC process of your customers. <br> <br>We will look after all the
+        KYC process, just integrate it in your system </h2>
+      <button class="btn-buy" id="buy-api">Enroll</button>
+    </div>
+  </section>
+
+  <div class="horizontal-line"></div>
+
+
+  <!-- <div class="content">
+    <h1>API Docs</h1>
+    </div> -->
+  <div class="instruction">
+    <h2 class="pan" style="color: red;">PAN number verification :</h2>
+    <h2> <strong> How to get access?</strong></h2>
+    <div class="desc">
+      <div class="description1">
+
+        <h3>
+          Enroll with us to get acess to the API call for Pan verification
+        </h3>
+      </div>
+      <div class="code-snippet">
+        <pre>
+        <code class="language-markdown">
+          localhost:3002/user-verifiacation/pan-verification?addressToBeVerified="address of the user"&companyAddress="company's address";
+        </code>
+      </pre>
+        <button class="copy-button">Copy</button>
+      </div>
+    </div>
+  </div>
+  <div class="horizontal-line"></div>
+
+  <div class="instruction">
+    <h2 class="pan" style="color: red;">Addhaar number verification :</h2>
+    <h2><strong> How to get access?</strong></h2>
+    <div class="desc">
+      <div class="description1">
+
+        <h3>
+          Enroll with us to get acess to the API call for Aadhaar verification
+        </h3>
+      </div>
+      <div class="code-snippet">
+        <pre>
+      <code class="language-markdown">
+        localhost:3002/user-verifiacation/adhaar-verification?addressToBeVerified="address of the user"&companyAddress="company's address";
+      </code>
+    </pre>
+        <button class="copy-button">Copy</button>
+      </div>
+    </div>
+  </div>
+  <div class="horizontal-line"></div>
+
+  <div class="instruction">
+    <h2 class="pan" style="color: red;">AGE verification :</h2>
+    <h2> <strong> How to get access?</strong></h2>
+    <div class="desc">
+      <div class="description1">
+
+        <h3>
+          Enroll with us to get acess to the API call for Age verification
+        </h3>
+      </div>
+      <div class="code-snippet">
+        <pre>
+    <code class="language-markdown">
+      localhost:3002/user-verifiacation/age-verification?addressToBeVerified="address of the user"&companyAddress="company's address";
+    </code>
+  </pre>
+        <button class="copy-button">Copy</button>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+
+  <script>
+    document.querySelectorAll('.code-snippet').forEach(function (snippet) {
+      var copyButton = snippet.querySelector('.copy-button');
+      var code = snippet.querySelector('code');
+
+      copyButton.addEventListener('click', function () {
+        copyToClipboard(code.textContent);
+        copyButton.textContent = 'Copied!';
+        setTimeout(function () {
+          copyButton.textContent = 'Copy';
+        }, 1500);
+      });
+    });
+
+    function copyToClipboard(text) {
+      var tempInput = document.createElement('textarea');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+
+      tempInput.select();
+      document.execCommand('copy');
+
+      document.body.removeChild(tempInput);
+    }
+
+    const web3 = new Web3(window.ethereum);
+    let ADDRESS = '0x8f559769fdda4a6b38C72DDBe59062d755c4D0b6';
+    let ABI = [{ "inputs": [], "stateMutability": "nonpayable", "type": "constructor" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "owner", "type": "address" }, { "indexed": true, "internalType": "address", "name": "spender", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Approval", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": true, "internalType": "address", "name": "from", "type": "address" }, { "indexed": true, "internalType": "address", "name": "to", "type": "address" }, { "indexed": false, "internalType": "uint256", "name": "value", "type": "uint256" }], "name": "Transfer", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "customerAddress", "type": "address" }, { "indexed": false, "internalType": "bool", "name": "status", "type": "bool" }], "name": "customerAdded", "type": "event" }, { "anonymous": false, "inputs": [{ "indexed": false, "internalType": "address", "name": "addressVerified", "type": "address" }, { "indexed": false, "internalType": "bool", "name": "status", "type": "bool" }], "name": "verificationDone", "type": "event" }, { "inputs": [], "name": "addComapny", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [], "name": "adduser", "outputs": [], "stateMutability": "payable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "owner", "type": "address" }, { "internalType": "address", "name": "spender", "type": "address" }], "name": "allowance", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "amount", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "approve", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "account", "type": "address" }], "name": "balanceOf", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_addressToBlackList", "type": "address" }], "name": "blackListComapny", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_addressToBlackList", "type": "address" }], "name": "blackListUser", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "", "type": "address" }], "name": "companyVerified", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "decimals", "outputs": [{ "internalType": "uint8", "name": "", "type": "uint8" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "subtractedValue", "type": "uint256" }], "name": "decreaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "spender", "type": "address" }, { "internalType": "uint256", "name": "addedValue", "type": "uint256" }], "name": "increaseAllowance", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "name", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "owner", "outputs": [{ "internalType": "address payable", "name": "", "type": "address" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "symbol", "outputs": [{ "internalType": "string", "name": "", "type": "string" }], "stateMutability": "view", "type": "function" }, { "inputs": [], "name": "totalSupply", "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }], "stateMutability": "view", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transfer", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "from", "type": "address" }, { "internalType": "address", "name": "to", "type": "address" }, { "internalType": "uint256", "name": "amount", "type": "uint256" }], "name": "transferFrom", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [], "name": "verifyAddress", "outputs": [], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_addressToBeVerified", "type": "address" }, { "internalType": "address", "name": "companyAddress", "type": "address" }], "name": "verifyUserAadhaar", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_addressToBeVerified", "type": "address" }, { "internalType": "address", "name": "companyAddress", "type": "address" }], "name": "verifyUserPan", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }, { "inputs": [{ "internalType": "address", "name": "_addressToBeVerified", "type": "address" }, { "internalType": "address", "name": "companyAddress", "type": "address" }], "name": "verifyUserage", "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }], "stateMutability": "nonpayable", "type": "function" }]
+    let account;
+
+    const connectWallet = document.getElementById('wallet-connect');
+    let buyApi = document.getElementById('buy-api');
+    connectWallet.addEventListener('click', async () => {
+      connectWallet.innerText = 'Connecting...'
+      const connectMetaMask = async () => {
+        if (window.ethereum != "undefined") {
+          ethereum.request({ method: "eth_requestAccounts" }).then(accounts => {
+            account = accounts[0];
+            console.log("metamask connected " + account);
+            connectWallet.innerText = account;
+
+          })
+        }
+      }
+      connectMetaMask();
+    })
+
+
+
+    buyApi.addEventListener('click', () => {
+      if (account == undefined) {
+        alert('connect wallet');
+        return;
+      }
+      buyApi.innerText = 'in process';
+      connectContract().then(() => makePayment().then((result) => {
+        buyApi.innerText = "Thank you are being a part of BKYC";
+      }));
+
+
+    })
+
+    const connectContract = async () => {
+      console.log(ABI + " " + ADDRESS);
+      window.web3 = await new Web3(window.ethereum);
+      window.contract = await new window.web3.eth.Contract(ABI, ADDRESS);
+      // console.log("contract connected");
+    }
+
+    const makePayment = async () => {
+      let result = await window.contract.methods.addComapny().send({ from: account, value: 5000000000000000 });
+      // let result =  await window.contract.methods.adduser().send({from: account, value: 500000000000000});
+      return result;
+    }
+
+
+
+  </script>
+</body>
+
+</html>

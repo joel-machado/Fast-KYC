@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,600&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="#" class="home-button">Home</a>
+    </div>
+    <div class="navbar-right">
+      <button class="connect-wallet-button" id="wallet-connect">Connect Wallet</button>
+    </div>
+  </nav>
+  <section id="vid-par">
+    <div class="image">
+      <img id="vidd" src="/image/img.gif" alt="" srcset="">
+    </div>
+    <div style="font-family: 'Poppins';" class="description">
+      <h1> BETTER KYC </h1>
+      <h2>complete kyc process in seconds by using public address</h2>
+    </div>
+  </section>
+  <div class="form">
+    <form>
+      <div class="form">
+        <h1 class="txt">Fill the details below :</h1>
+        <div class="input-group">
+
+          <label for="pan">PAN Card Number:</label>
+          <input type="text" id="pan" name="pan" required>
+
+         
+        </div>
+        <div class="input-group">
+          <label for="aadhar">Aadhar Card Number:</label>
+          <input type="text" id="aadhaar"  name="aadhaar" required>
+          
+        </div>
+        <div>
+          <button id="submit">verify</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/web3@1.6.0/dist/web3.min.js"></script>
+  <script>
+    const web3 = new Web3(window.ethereum);
+    let account;
+    const connectWallet = document.getElementById('wallet-connect');
+
+    connectWallet.addEventListener('click', async () => {
+      connectWallet.innerText = 'Connecting...'
+      const connectMetaMask = async () => {
+        if (window.ethereum != "undefined") {
+          ethereum.request({ method: "eth_requestAccounts" }).then(accounts => {
+            account = accounts[0];
+            console.log("metamask connected " + account);
+            connectWallet.innerText = account;
+            
+          })
+        }
+      }
+      connectMetaMask();
+    })
+
+    // const panVerify = document.getElementById('pan-verify');
+    const panInput = document.getElementById('pan');
+    const aadhaarInput = document.getElementById('aadhaar')
+    const submit = document.getElementById('submit');
+    submit.addEventListener('click', () => {
+      event.preventDefault();
+      if (panInput.value == '') {
+        alert("fill the pan number");
+        return;
+      }
+
+      if(account == undefined){
+        alert('connect wallet');
+        return
+      }
+    
+      if (aadhaarInput.value == '') {
+        alert("fill the aadhaar number");
+        return;
+      }
+
+      let url = '/user-verification?pan='+panInput.value+'&aadhaar='+aadhaarInput.value+'&account='+account;
+      window.open(url, '_self');
+      
+
+    })
+
+  
+
+
+  
+
+
+
+
+  </script>
+</body>
+
+</html>
